@@ -30,13 +30,25 @@ a tier is not compliance — the trigger below is.
   single-fact answers, or an answer that is wholly a judgement ("this
   refactor is risky: no tests, sole author gone"). There is no relation
   to model, and `risk = "high"` is a net loss
+- **A session report is not a shape.** "What I did, what is left, what
+  comes next" is an inventory: items that neither exclude, sequence nor
+  cause one another. It belongs in a list or a table. A union type
+  listing five named phases with three fields each is a table wearing
+  type chrome
+- **Run the deletion test before emitting a block.** Remove the block:
+  if nothing is lost, it was decoration — drop it. Remove the prose: if
+  only the *why* disappears, the split is right. If a fact disappears
+  whichever side you cut, block and prose say the same thing twice and
+  the reader pays twice
 
 ## Always
 
 - **The code does not have to compile, and must not pretend to.** Syntax
   stays plausible enough to parse mentally; semantics are free. An
   uninitialised variable whose name carries the meaning is correct
-  usage, not a shortcut
+  usage, not a shortcut. An expression the reader has to decode
+  (`Broke 5 of 10 |> AllFixedBeforePublish`) has left free semantics
+  and become noise
 - **An identifier names a concept, not a claim.** Roughly four words, no
   conjugated verb, no subordinate clause. Past that it is a sentence in
   camelCase — the same prose this format exists to remove, and it
@@ -52,11 +64,12 @@ a tier is not compliance — the trigger below is.
   malformed expression instead
 - Identifiers in English and idiomatic for the language in use; the
   prose around the block in the language of the conversation
-- One language per response, never two. Resolution order: the dominant
-  language of the current project, otherwise F# for domain and decision
-  shapes, Python for procedures and causal chains, TypeScript for
-  pipelines and scope work, Kotlin where either would fit — pseudo-code
-  only when none does
+- **One block per response, placed where the decision is.** A block
+  that opens a response summarises an answer nobody has read yet, so
+  the reader reads it twice. Never put a block directly above a table
+  or a list that restates it
+- One language per response, never two. Which one: see *Choosing the
+  language* below
 - The block is an answer, never project code: never write it to a file,
   never offer it as a patch, never refer to it later as if it existed
 
@@ -82,7 +95,32 @@ and nothing appended: a second word in the info string breaks syntax
 highlighting on some renderers, and the marker line already carries the
 warning.
 
-Shape catalogue — closed. Content matching no row is prose:
+### Choosing the language
+
+The shape decides, not a ranking. The current project's language comes
+first only when the answer is *about that project's code* — a docs
+repository has no dominant language, and falling back by default is how
+every answer ends up in the same one.
+
+| Shape of the answer              | Language                 |
+|----------------------------------|--------------------------|
+| Decision among exclusive options | F#                       |
+| State machine                    | F#                       |
+| Ordered procedure                | Python                   |
+| Causal chain                     | Python                   |
+| Pipeline with preconditions      | TypeScript               |
+| Scope, in and out                | TypeScript               |
+| Threshold, ratio, magnitude      | tier 1 only, no block    |
+| Inventory of things done         | not code — a list        |
+
+**F# requires a `match`.** A union type that no `match` consumes is an
+inventory wearing type chrome — five named cases with three fields
+each, nothing excluding anything. Write the `match`, change language,
+or go back to prose.
+
+### Shape catalogue
+
+Closed. Content matching no row is prose:
 
 | Content                          | Construct                        |
 |----------------------------------|----------------------------------|
