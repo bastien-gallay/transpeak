@@ -31,7 +31,9 @@ Two tiers: an inline formula (tier 1, one relation is enough) and a
 fenced typed block (tier 2, three elements and a nameable relation).
 Prose keeps the *why*. Four hard rules make the code readable rather
 than merely present: it need not compile, identifiers name concepts not
-claims, no comments, no logic inside strings.
+claims, no comments, no logic inside strings. A deletion test decides
+whether a block should exist at all: cut the block, and if nothing is
+lost it was decoration.
 
 ## Architecture: source → derived
 
@@ -80,6 +82,36 @@ directly — the next `./build.sh` overwrites it.
   `README.md` and `CLAUDE.md`.
 - Keep the prompt body wrapped at ~72 columns and ASCII diagrams under
   80, as Glance's own content rule requires.
+
+## Field evidence
+
+The only measurement this repo has. Four transpeak blocks were extracted
+from real sessions on 2026-08-28 (a client docs repository, 26
+substantive responses, 2 sessions). What they showed, and what each
+finding changed:
+
+- **4 blocks out of 4 were end-of-session reports** — the one content
+  type the format handles worst. One block listed five wrap phases with
+  three figures each, and a markdown table six lines below restated the
+  same five phases. Produced the session-report exclusion and the
+  deletion test in `## Trigger`.
+- **4 blocks out of 4 were F#**, and no `match` consumed the unions in
+  half of them. The old resolution order opened on "the dominant
+  language of the current project"; a docs repository has none, so every
+  answer fell through to the same fallback. Produced *Choosing the
+  language* and the `match` gate.
+- **The blocks stopped after `/wrap` was invoked.** The slash command
+  had been injected once; a skill prompt landing later buried it. This
+  is the "wish, not a mechanism" trap below, observed rather than
+  reasoned. Nothing in the prompt can fix it — it is a surface choice.
+- Rules already in `## Always` were violated unnoticed: comments in two
+  blocks, a claim in a string (`debt: "+33 lines, no trim"`), and an
+  expression past the readable limit
+  (`Broke 5 of 10 |> AllFixedBeforePublish`). Only the last one produced
+  a new clause; the other two were already forbidden, which is a
+  reminder that adding a rule is not the same as making it bite.
+
+Before adding a rule, prefer measuring again over reasoning again.
 
 ## Traps
 
