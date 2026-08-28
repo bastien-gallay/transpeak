@@ -59,12 +59,29 @@ predicate in F#. That is deliberate, and it is the point of the next section.
   smuggled through the type system. Use a union case instead — even a
   malformed expression beats a sentence in quotes.
 
+## Choosing the language
+
+The shape of the answer decides, not a ranking: F# for a decision among
+exclusive options or a state machine, Python for a procedure or a causal
+chain, TypeScript for a pipeline or scope work. The project's own
+language comes first only when the answer is *about that project's
+code*. And **an F# block must contain a `match`** — a union no `match`
+consumes is an inventory wearing type chrome.
+
 ## What it will not transpile
 
 Judgements. *"This refactor is risky: the module is four years old, has no
 tests, and its only author left."* Three facts and a recommendation, no
-relation to model. `risk = "high"` loses everything. The trigger exists so
-that this stays a sentence.
+relation to model. `risk = "high"` loses everything.
+
+Inventories. "What I did, what is left, what comes next" is a list, not a
+relation — and a union type listing five named phases is a table wearing
+type chrome.
+
+The test, before any block: **delete it.** If nothing is lost, it was
+decoration. Delete the prose instead: if only the *why* disappears, the
+split is right. If a fact disappears whichever side you cut, the two are
+saying the same thing and the reader pays twice.
 
 ## Surfaces
 
