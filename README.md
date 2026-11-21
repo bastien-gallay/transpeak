@@ -1,5 +1,15 @@
 # Transpeak
 
+> [!IMPORTANT]
+> **This repository has moved.** `transpeak` now lives in the
+> [bastien-gallay/skills](https://github.com/bastien-gallay/skills/tree/main/styles/transpeak) monorepo, under `styles/transpeak/`, with its full
+> history. This repository is archived and read-only.
+
+```sh
+git clone https://github.com/bastien-gallay/skills.git
+skills/styles/transpeak/install.sh
+```
+
 > A shared answer format for Claude.ai and Claude Code.
 > When an answer has a shape — options, a procedure, a scope, a cause —
 > it comes back as types and expressions instead of paragraphs.
